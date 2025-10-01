@@ -8,10 +8,7 @@ export const useDeleteFlowRunsDialog = () => {
 
 	const { mutateAsync } = useDeleteFlowRun();
 
-	const handleDeletes = async (
-		flowRunIds: Array<string>,
-		onConfirm = () => {},
-	) => {
+	const handleDeletes = async (flowRunIds: Array<string>) => {
 		try {
 			const res = await Promise.allSettled(
 				flowRunIds.map((id) => mutateAsync(id)),
@@ -39,20 +36,15 @@ export const useDeleteFlowRunsDialog = () => {
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		} catch (error) {
 			console.error("Unknown error while deleting flow run.");
-		} finally {
-			onConfirm();
 		}
 	};
 
-	const handleConfirmDelete = (
-		flowRunIds: Array<string>,
-		onConfirm = () => {},
-	) =>
+	const handleConfirmDelete = (flowRunIds: Array<string>) =>
 		confirmDelete({
 			title: "Delete Flow Runs",
 			description: "Are you sure you want to delete selected flow runs?",
 			onConfirm: () => {
-				void handleDeletes(flowRunIds, onConfirm);
+				void handleDeletes(flowRunIds);
 			},
 		});
 

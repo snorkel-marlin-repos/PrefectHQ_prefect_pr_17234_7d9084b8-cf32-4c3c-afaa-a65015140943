@@ -6,7 +6,6 @@ import { type JSX, useMemo } from "react";
 
 import { DeploymentConfiguration } from "./deployment-configuration";
 import { DeploymentDescription } from "./deployment-description";
-import { DeploymentDetailsUpcomingTab } from "./deployment-details-upcoming-tab";
 import { DeploymentParametersTable } from "./deployment-parameters-table";
 
 const routeApi = getRouteApi("/deployments/deployment/$id");
@@ -67,7 +66,7 @@ function useBuildTabOptions(deployment: Deployment) {
 					),
 					ViewComponent: () => (
 						<TabsContent value="Upcoming">
-							<DeploymentDetailsUpcomingTab deploymentId={deployment.id} />
+							<div className="border border-red-400">{"<UpcomingView />"}</div>
 						</TabsContent>
 					),
 				},
