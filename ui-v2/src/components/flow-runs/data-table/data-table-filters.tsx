@@ -51,6 +51,7 @@ export const FlowRunsFilters = ({
 			"'FlowRunsFilters' must be a child of `RowSelectionContext`",
 		);
 	}
+
 	const [deleteConfirmationDialogState, confirmDelete] =
 		useDeleteFlowRunsDialog();
 
@@ -65,11 +66,7 @@ export const FlowRunsFilters = ({
 						aria-label="Delete rows"
 						size="icon"
 						variant="secondary"
-						onClick={() => {
-							confirmDelete(selectedRows, () =>
-								rowSelectionCtx.setRowSelection({}),
-							);
-						}}
+						onClick={() => confirmDelete(selectedRows)}
 					>
 						<Icon id="Trash2" className="h-4 w-4" />
 					</Button>

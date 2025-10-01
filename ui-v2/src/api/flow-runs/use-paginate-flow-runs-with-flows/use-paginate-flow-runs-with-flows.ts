@@ -1,5 +1,5 @@
 import {
-	type FlowRunWithFlow,
+	FlowRunWithFlow,
 	type FlowRunsPaginateFilter,
 	buildPaginateFlowRunsQuery,
 } from "@/api/flow-runs";
